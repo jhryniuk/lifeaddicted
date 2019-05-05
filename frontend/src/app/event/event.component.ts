@@ -48,6 +48,16 @@ export class EventComponent implements OnInit {
 
 
   public onSubmit(form: NgForm) {
-    console.log(form);
+    let event = this.event;
+    event.participants.push(
+      {
+        id: 3,
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        email: form.value.email,
+        mobile: form.value.mobile
+      }
+    );
+    console.log(event);
   }
 }
