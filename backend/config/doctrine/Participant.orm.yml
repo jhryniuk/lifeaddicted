@@ -1,0 +1,28 @@
+App\Entity\Participant:
+  type: entity
+  table: participant
+  repositoryClass: App\Repository\ParticipantRepository
+  id:
+    id:
+      type: integer
+      generator: {strategy: AUTO}
+  fields:
+    firstName:
+      type: string
+      length: 255
+      nullable: false
+    lastName:
+      type: string
+      length: 255
+    email:
+      type: string
+      length: 255
+    mobile:
+      type: string
+      length: 20
+
+  manyToMany:
+    events:
+      targetEntity: App\Entity\Event
+      mappedBy: participants
+      cascade: ["all"]

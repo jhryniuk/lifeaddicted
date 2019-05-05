@@ -1,0 +1,68 @@
+<h1>Events page</h1>
+
+<div *ngIf="event">
+  <div class="card">
+    <div class="card-img">
+      <img src="">
+    </div>
+    <div class="card-header">{{event.name}}</div>
+    <div class="card-body">
+      <div>Organizer: {{event.owner[0].firstName}} {{event.owner[0].lastName}}</div>
+      <div>Contact: {{event.owner[0].email}}</div>
+      <div>Date of event: {{event.event_date | date: 'dd-MM-yyyy'}}</div>
+      <div>Hour of event: {{event.event_date | date: 'HH:mm:ss'}}</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Join form</div>
+    <div class="card-body">
+      <form #form='ngForm' (ngSubmit)="onSubmit(form)" novalidate>
+        <div>
+          <label class="col-sm-2">First Name: </label>
+          <input name="firstName" type="text" ngModel required>
+        </div>
+        <div>
+          <label class="col-sm-2">Last Name: </label>
+          <input name="lastName" type="text" ngModel required>
+        </div>
+        <div>
+          <label class="col-sm-2">Email: </label>
+          <input name="email" type="email" ngModel required>
+        </div>
+        <div>
+          <label class="col-sm-2">Mobile: </label>
+          <input name="mobile" type="text" ngModel required>
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="eventList" class="d-flex flex-wrap">
+  <div *ngFor="let event of eventList" class="col-sm-3">
+    <div class="card">
+      <div class="card-img">
+        <img src="">
+      </div>
+      <div class="card-header">{{event.name}}</div>
+      <div class="card-body">
+        <div>Organizer: {{event.owner[0].firstName}} {{event.owner[0].lastName}}</div>
+        <div>Contact: {{event.owner[0].email}}</div>
+        <div>Date of event: {{event.event_date | date: 'dd-MM-yyyy'}}</div>
+        <div>Hour of event: {{event.event_date | date: 'HH:mm:ss'}}</div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col">
+              <div class="pointer mx-auto w-50 p-2 btn-primary text-white text-center"
+                   routerLink="/events/{{event.id}}">
+                Join!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

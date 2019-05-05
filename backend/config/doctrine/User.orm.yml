@@ -1,0 +1,27 @@
+App\Entity\User:
+  type: entity
+  table: users
+  repositoryClass: App\Repository\UserRepository
+  id:
+    id:
+      type: integer
+      generator: {strategy: AUTO}
+  fields:
+    firstName:
+      type: string
+      length: 255
+      nullable: false
+    lastName:
+      type: string
+      length: 255
+      nullable: false
+    email:
+      type: string
+      length: 255
+      nullable: false
+
+  manyToMany:
+    events:
+      targetEntity: App\Entity\Event
+      mappedBy: owner
+      cascade: ["all"]

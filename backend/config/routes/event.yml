@@ -1,0 +1,24 @@
+event-index:
+  path: /event
+  controller: App\Controller\EventController::index
+  methods: ['get']
+
+event-show:
+  path: /event/{id}
+  controller: App\Controller\EventController::show
+  methods: ['get']
+
+event-post:
+  path: /event
+  controller: App\Controller\EventController::post
+  methods: ['post']
+
+event-put:
+  path: /event/{id}
+  controller: App\Controller\EventController::put
+  methods: ['put']
+
+event-delete:
+  path: /event/{id}
+  controller: App\Controller\EventController::delete
+  methods: ['delete']

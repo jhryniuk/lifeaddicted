@@ -1,0 +1,41 @@
+App\Entity\Event:
+  type: entity
+  table: event
+  repositoryClass: App\Repository\EventRepository
+  id:
+    id:
+      type: integer
+      generator: {strategy: AUTO}
+  fields:
+    name:
+      type: string
+      length: 255
+      nullable: false
+    eventDate:
+      type: datetime
+      nullable: false
+
+  manyToMany:
+    owner:
+      targetEntity: App\Entity\User
+      inversedBy: owner
+      joinTable:
+        name: events_users
+        joinColumns:
+          event_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          user_id:
+            referencedColumnName: id
+
+    participants:
+      targetEntity: App\Entity\Participant
+      inversedBy: events
+      joinTable:
+        name: events_participants
+        joinColumns:
+          event_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          participant_id:
+            referencedColumnName: id

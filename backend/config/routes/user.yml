@@ -1,0 +1,24 @@
+user-index:
+  path: /user
+  controller: App\Controller\UserController::index
+  methods: ['get']
+
+user-show:
+  path: /user/{id}
+  controller: App\Controller\UserController::show
+  methods: ['get']
+
+user-post:
+  path: /user
+  controller: App\Controller\UserController::post
+  methods: ['post']
+
+user-put:
+  path: /user/{id}
+  controller: App\Controller\UserController::put
+  methods: ['put']
+
+user-delete:
+  path: /user/{id}
+  controller: App\Controller\UserController::delete
+  methods: ['delete']

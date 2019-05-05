@@ -1,0 +1,73 @@
+version: '3.5'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/runner/php/Dockerfile
+    volumes:
+      - web:/var/www/html
+    networks:
+      - default
+
+  nginx:
+    image: nginx:1.15.7
+    ports:
+      - 80:80
+    volumes:
+      - web:/var/www/html
+      - ./docker/runner/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - default
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_USER: lifeaddicted
+      MYSQL_PASSWORD: lifeaddicted
+      MYSQL_DATABASE: lifeaddicted
+    networks:
+      - default
+
+  node:
+    build:
+      context: .
+      dockerfile: docker/runner/node/Dockerfile
+    volumes:
+      - web-frontend:/var/www
+      - ./docker/node/data:/home/node
+    ports:
+      - 4200:4200
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  web:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/backend
+      o: bind
+
+  web-frontend:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/frontend
+      o: bind
+
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/docker/runner/data/mysql
+      o: bind
