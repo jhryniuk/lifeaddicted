@@ -34,13 +34,11 @@ class UserController extends BaseController
 
             return new Response($serializedData, Response::HTTP_CREATED, [
                 'Content-Type' => $request->headers->get('Accept'),
-                'Access-Control-Allow-Origin' => '*'
             ]);
         }
 
         return new Response('', Response::HTTP_BAD_REQUEST, [
             'Content-Type' => $request->headers->get('Accept'),
-            'Access-Control-Allow-Origin' => '*'
         ]);
     }
 
@@ -70,13 +68,11 @@ class UserController extends BaseController
 
             return new Response($serializedData, Response::HTTP_CREATED, [
                 'Content-Type' => $request->headers->get('Accept'),
-                'Access-Control-Allow-Origin' => '*'
             ]);
         }
 
         return new Response('', Response::HTTP_BAD_REQUEST, [
             'Content-Type' => $request->headers->get('Accept'),
-            'Access-Control-Allow-Origin' => '*'
         ]);
     }
 }

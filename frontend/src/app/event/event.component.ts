@@ -51,13 +51,22 @@ export class EventComponent implements OnInit {
     let event = this.event;
     event.participants.push(
       {
-        id: 3,
+        id: 2,
         firstName: form.value.firstName,
         lastName: form.value.lastName,
         email: form.value.email,
         mobile: form.value.mobile
       }
     );
-    console.log(event);
+
+    this.eventService.put(this.id, event)
+      .subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 }

@@ -32,7 +32,6 @@ abstract class BaseController extends AbstractController
 
         return new Response($serializedData, Response::HTTP_OK, [
             'Content-Type' => $request->headers->get('Accept'),
-            'Access-Control-Allow-Origin' => '*'
         ]);
     }
 
@@ -47,7 +46,6 @@ abstract class BaseController extends AbstractController
 
         return new Response($serializedData, Response::HTTP_OK, [
             'Content-Type' => $request->headers->get('Accept'),
-            'Access-Control-Allow-Origin' => '*'
         ]);
     }
 
@@ -71,13 +69,11 @@ abstract class BaseController extends AbstractController
 
             return new Response($serializedData, Response::HTTP_CREATED, [
                 'Content-Type' => $request->headers->get('Accept'),
-                'Access-Control-Allow-Origin' => '*'
             ]);
         }
 
         return new Response('', Response::HTTP_BAD_REQUEST, [
             'Content-Type' => $request->headers->get('Accept'),
-            'Access-Control-Allow-Origin' => '*'
         ]);
     }
 
@@ -107,13 +103,11 @@ abstract class BaseController extends AbstractController
 
             return new Response($serializedData, Response::HTTP_CREATED, [
                 'Content-Type' => $request->headers->get('Accept'),
-                'Access-Control-Allow-Origin' => '*'
             ]);
         }
 
         return new Response('', Response::HTTP_BAD_REQUEST, [
             'Content-Type' => $request->headers->get('Accept'),
-            'Access-Control-Allow-Origin' => '*'
         ]);
     }
 
@@ -134,7 +128,6 @@ abstract class BaseController extends AbstractController
 
         return new Response($serializedData, Response::HTTP_OK, [
             'Content-Type' => $request->headers->get('Accept'),
-            'Access-Control-Allow-Origin' => '*'
         ]);
     }
 

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Event} from "../interfaces/event";
+import {environment} from '../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class EventService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      'Accept':  'application/json',
+      'Accept': 'application/json'
     })
   };
 
@@ -19,15 +20,14 @@ export class EventService {
   }
 
   public getEventList() {
-    return this.http.get("http://lifeaddicted.local/event", this.httpOptions);
+    return this.http.get(environment.api_url + "/event", this.httpOptions);
   }
 
   public getEvent(eventId: number) {
-    return this.http.get('http://lifeaddicted.local/event/' + eventId, this.httpOptions);
+    return this.http.get(environment.api_url + '/event/' + eventId, this.httpOptions);
   }
 
   public put(eventId: number, data: Event) {
-    console.log(data);
-    return this.http.put('test', data);
+    return this.http.put(environment.api_url + '/event/' + eventId, data, this.httpOptions);
   }
 }
