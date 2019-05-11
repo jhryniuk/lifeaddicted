@@ -12,4 +12,19 @@ class ParticipantRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Participant::class);
     }
+    public function findAll()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->getQuery()->getResult();
+    }
+
+    public function findById(int $id)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()->getResult();
+    }
 }

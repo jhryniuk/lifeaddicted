@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
-use App\DTO\UserDTO;
-use App\Entity\User;
-use App\Form\Type\UserType;
+use App\DTO\ParticipantDTO;
+use App\Entity\Participant;
+use App\Form\Type\ParticipantType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserController extends BaseController
+class ParticipantController extends BaseController
 {
-    protected $entity = User::class;
-    protected $form = UserType::class;
-    protected $dto = UserDTO::class;
+    protected $entity = Participant::class;
+    protected $form = ParticipantType::class;
+    protected $dto = ParticipantDTO::class;
 
     public function post(Request $request)
     {

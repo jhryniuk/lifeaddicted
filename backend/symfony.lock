@@ -68,6 +68,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "monolog/monolog": {
+        "version": "1.24.0"
+    },
     "nelmio/cors-bundle": {
         "version": "1.5",
         "recipe": {
@@ -167,6 +170,18 @@
     "symfony/intl": {
         "version": "v4.2.1"
     },
+    "symfony/monolog-bridge": {
+        "version": "v4.2.8"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.1",
+            "ref": "18ebf5a940573a20de06f9c4060101eeb438cf3d"
+        }
+    },
     "symfony/options-resolver": {
         "version": "v4.2.1"
     },
@@ -196,6 +211,15 @@
     },
     "symfony/serializer": {
         "version": "v4.2.1"
+    },
+    "symfony/validator": {
+        "version": "4.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.1",
+            "ref": "9a285e4ff3915c7cd086e9945f30591a926baf83"
+        }
     },
     "symfony/var-exporter": {
         "version": "v4.2.1"

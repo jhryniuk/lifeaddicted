@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Event} from "../interfaces/event";
-import {environment} from '../environments/environment'
+import {environment} from '../environments/environment';
 import * as moment from "moment";
+import {ParticipantService} from "./participant.service";
 
 @Injectable({
   providedIn: 'root'
@@ -29,15 +30,18 @@ export class EventService {
   }
 
   public put(eventId: number, data: Event) {
+    let participantsIds = [];
+    data.participants.forEach((p) =>{
+      participantsIds.push(p.id);
+    });
+
     let toPersist = {
       name: data.name,
       eventDate: moment(data.event_date).format('YYYY-MM-DD HH:mm:ss'),
       owner: data.owner[0].id,
-      participants: [1,2],
+      participants: participantsIds,
     };
-    // data.participants.forEach((p, v) => {
-    //   toPersist.participants[v] = p.id;
-    // });
+
     return this.http.put(environment.api_url + '/event/' + eventId, toPersist, this.httpOptions);
   }
 }

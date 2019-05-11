@@ -11,9 +11,9 @@ class ParticipantDTO implements DTO
      */
     private $participant;
 
-    public function set(Participant $user)
+    public function set(Participant $participant)
     {
-        $this->participant = $user;
+        $this->participant = $participant;
     }
 
     public function toArray(): ?array

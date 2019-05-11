@@ -5,6 +5,8 @@ import {Event} from "../../interfaces/event";
 import {NgForm} from "@angular/forms";
 import {EventRaw} from "../../interfaces/event-raw";
 import {EventRawToEvent} from "../../dto/EventRawToEvent";
+import {ParticipantService} from "../../services/participant.service";
+import {Participant} from "../../interfaces/participant";
 
 @Component({
   selector: 'app-event',
@@ -19,7 +21,8 @@ export class EventComponent implements OnInit {
 
   public constructor(
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private participantService: ParticipantService
   ) {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
   }
@@ -49,24 +52,26 @@ export class EventComponent implements OnInit {
 
   public onSubmit(form: NgForm) {
     let event = this.event;
-    event.participants.push(
+    this.participantService.createParticipant(
       {
-        id: 2,
         firstName: form.value.firstName,
         lastName: form.value.lastName,
         email: form.value.email,
         mobile: form.value.mobile
       }
-    );
+    )
+      .subscribe((data: Participant) => {
+        event.participants.push(data);
 
-    this.eventService.put(this.id, event)
-      .subscribe(
-        (data) => {
-          console.log(data);
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+        this.eventService.put(this.id, event)
+          .subscribe(
+            (data) => {
+              console.log(data);
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+      });
   }
 }
