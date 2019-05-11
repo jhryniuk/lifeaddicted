@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "events": "Wydarzenia"
+  },
+  "sub-page": {
+    "title": {
+      "home": "Strona główna",
+      "events": "Strona wydarzeń"
+    },
+    "event": {
+      "description": {
+        "organizer": "Organizator:",
+        "contact": "Kontakt:",
+        "date-of-event": "Data wydarzenia:",
+        "hour-of-event": "Godzina wydarzenia:"
+      },
+      "participants": {
+        "title": "Uczestnicy"
+      },
+      "join-form": {
+        "title": "Formularz przyłączenia",
+        "first-name": "Imię:",
+        "last-name": "Nazwisko:",
+        "email": "Email:",
+        "mobile": "Komórka:",
+        "submit": "Wyślij"
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<h1>Events page</h1>
+<h1 translate>sub-page.title.events</h1>
 
 <div *ngIf="event">
   <div class="card">
@@ -8,26 +8,26 @@
     <div class="card-header">{{event.name}}</div>
     <div class="card-body">
       <div class="row">
-        <div class="col-sm-2">Organizer:</div>
+        <div class="col-sm-2" translate>sub-page.event.description.organizer</div>
         <div class="col-sm-3">{{event.owner[0].firstName}} {{event.owner[0].lastName}}</div>
       </div>
       <div class="row">
-        <div class="col-sm-2">Contact:</div>
+        <div class="col-sm-2" translate>sub-page.event.description.contact</div>
         <div class="col-sm-3">{{event.owner[0].email}}</div>
       </div>
       <div class="row">
-        <div class="col-sm-2">Date of event:</div>
+        <div class="col-sm-2" translate>sub-page.event.description.date-of-event</div>
         <div class="col-sm-3">{{event.event_date | date: 'dd-MM-yyyy'}}</div>
       </div>
       <div class="row">
-        <div class="col-sm-2">Hour of event:</div>
+        <div class="col-sm-2" translate>sub-page.event.description.hour-of-event</div>
         <div class="col-sm-3">{{event.event_date | date: 'HH:mm:ss'}}</div>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-header">Participants</div>
+    <div class="card-header" translate>sub-page.event.participants.title</div>
     <div class="card-body">
       <div *ngFor="let participant of event.participants; let i = index" >
         <div class="row">
@@ -40,26 +40,26 @@
   </div>
 
   <div class="card">
-    <div class="card-header">Join form</div>
+    <div class="card-header" translate>sub-page.event.join-form.title</div>
     <div class="card-body">
       <form #form='ngForm' (ngSubmit)="onSubmit(form)" novalidate>
         <div>
-          <label class="col-sm-2">First Name: </label>
+          <label class="col-sm-2" translate>sub-page.event.join-form.first-name</label>
           <input name="firstName" type="text" ngModel required>
         </div>
         <div>
-          <label class="col-sm-2">Last Name: </label>
+          <label class="col-sm-2" translate>sub-page.event.join-form.last-name</label>
           <input name="lastName" type="text" ngModel required>
         </div>
         <div>
-          <label class="col-sm-2">Email: </label>
+          <label class="col-sm-2" translate>sub-page.event.join-form.email</label>
           <input name="email" type="email" ngModel required>
         </div>
         <div>
-          <label class="col-sm-2">Mobile: </label>
+          <label class="col-sm-2" translate>sub-page.event.join-form.mobile</label>
           <input name="mobile" type="text" ngModel required>
         </div>
-        <button>Submit</button>
+        <button translate>sub-page.event.join-form.submit</button>
       </form>
     </div>
   </div>
@@ -73,10 +73,10 @@
       </div>
       <div class="card-header">{{event.name}}</div>
       <div class="card-body">
-        <div>Organizer: {{event.owner[0].firstName}} {{event.owner[0].lastName}}</div>
-        <div>Contact: {{event.owner[0].email}}</div>
-        <div>Date of event: {{event.event_date | date: 'dd-MM-yyyy'}}</div>
-        <div>Hour of event: {{event.event_date | date: 'HH:mm:ss'}}</div>
+        <div class="row"><div translate>sub-page.event.description.organizer</div><div class="col-sm-1"></div><div>{{event.owner[0].firstName}} {{event.owner[0].lastName}}</div></div>
+        <div class="row"><div translate>sub-page.event.description.contact</div><div class="col-sm-1"></div><div>{{event.owner[0].email}}</div></div>
+        <div class="row"><div translate>sub-page.event.description.date-of-event</div><div class="col-sm-1"></div><div>{{event.event_date | date: 'dd-MM-yyyy'}}</div></div>
+        <div class="row"><div translate>sub-page.event.description.hour-of-event</div><div class="col-sm-1"></div><div>{{event.event_date | date: 'HH:mm:ss'}}</div></div>
         <div class="card-footer">
           <div class="row">
             <div class="col">

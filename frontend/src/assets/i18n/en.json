@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "home": "Home",
+    "events": "Events"
+  },
+  "sub-page": {
+    "title": {
+      "home": "Home Page",
+      "events": "Events Page"
+    },
+    "event": {
+      "description": {
+        "organizer": "Organizer:",
+        "contact": "Contact:",
+        "date-of-event": "Date of event:",
+        "hour-of-event": "Hour of event:"
+      },
+      "participants": {
+        "title": "Participants"
+      },
+      "join-form": {
+        "title": "Join form",
+        "first-name": "First name:",
+        "last-name": "Last name:",
+        "email": "Email:",
+        "mobile": "Mobile:",
+        "submit": "Submit"
+      }
+    }
+  }
+}

@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Event} from "../interfaces/event";
 import {environment} from '../environments/environment';
 import * as moment from "moment";
-import {ParticipantService} from "./participant.service";
 
 @Injectable({
   providedIn: 'root'
