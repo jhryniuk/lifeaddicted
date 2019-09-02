@@ -1,6 +1,18 @@
 <h1 translate>sub-page.title.events</h1>
 
 <div *ngIf="event">
+
+  <div *ngIf="existingParticipant" class="alert alert-info alert-dismissible">
+    <button type="button" class="close">&times;</button>
+    <div translate>sub-page.event.existing-participant-main</div>
+    <div>{{existingParticipant.firstName}}</div>
+    <div>{{existingParticipant.lastName}}</div>
+    <div>{{existingParticipant.mobile}}</div>
+    <div>{{existingParticipant.email}}</div>
+    <div translate>sub-page.event.existing-participant-question</div>
+    <button type="button" data-dismiss="alert" (click)="submitExistingParticipant(existingParticipant, form)" translate>sub-page.event.existing-participant-yes-button</button>
+    <button type="button" data-dismiss="alert" (click)="submitNewParticipant(form)" translate>sub-page.event.existing-participant-no-button</button>
+  </div>
   <div class="card">
     <div class="card-img">
       <img src="">
@@ -26,7 +38,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" *ngIf="event.participants.length > 0">
     <div class="card-header" translate>sub-page.event.participants.title</div>
     <div class="card-body">
       <div *ngFor="let participant of event.participants; let i = index" >
@@ -82,7 +94,7 @@
             <div class="col">
               <div class="pointer mx-auto w-50 p-2 btn-primary text-white text-center"
                    routerLink="/events/{{event.id}}">
-                Join!
+                <div translate>sub-page.event.join</div>
               </div>
             </div>
           </div>

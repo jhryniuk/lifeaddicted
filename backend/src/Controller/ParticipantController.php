@@ -42,6 +42,27 @@ class ParticipantController extends BaseController
         ]);
     }
 
+    public function showByEmail(Request $request, $email)
+    {
+        $serializer = $this->getSerializer();
+        $data = $this->getDoctrine()->getRepository($this->getEntity())->findBy(['email' => $email]);
+        if (empty($data)) {
+            $serializedData = $serializer->serialize([], explode('/', $request->headers->get('Accept'))[1]);
+            return new Response($serializedData, Response::HTTP_NOT_FOUND, [
+                'Content-Type' => $request->headers->get('Accept'),
+            ]);
+        }
+        $dto = $this->getDTO();
+        $dto->set($data[0]);
+
+        $serializedData = $serializer->serialize($dto->toArray(), explode('/', $request->headers->get('Accept'))[1]);
+
+        return new Response($serializedData, Response::HTTP_OK, [
+            'Content-Type' => $request->headers->get('Accept'),
+        ]);
+    }
+
+
     public function put(Request $request, $id)
     {
         $raw = $this->getDoctrine()->getRepository($this->getEntity())->findById($id);

@@ -18,6 +18,7 @@ export class EventComponent implements OnInit {
   private event: Event;
   private eventList: Array<Event> = [];
   private error: string;
+  private existingParticipant: Participant;
 
   public constructor(
     private route: ActivatedRoute,
@@ -49,9 +50,42 @@ export class EventComponent implements OnInit {
     }
   }
 
-
   public onSubmit(form: NgForm) {
     let event = this.event;
+    this.participantService.getByEmail(form.value.email)
+      .subscribe(
+        (data: Participant) => {
+          this.existingParticipant = data;
+        },
+        () => {
+          this.existingParticipant = null;
+          this.participantService.createParticipant(
+            {
+              firstName: form.value.firstName,
+              lastName: form.value.lastName,
+              email: form.value.email,
+              mobile: form.value.mobile
+            }
+          )
+            .subscribe((data: Participant) => {
+              event.participants.push(data);
+              this.eventService.put(this.id, event)
+                .subscribe();
+            });
+        }
+      );
+  }
+
+  private submitExistingParticipant(data: Participant, form: NgForm)
+  {
+    form.reset();
+    this.event.participants.push(data);
+    this.eventService.put(this.id, this.event).subscribe();
+    this.existingParticipant = null;
+  }
+
+  private submitNewParticipant(form: NgForm)
+  {
     this.participantService.createParticipant(
       {
         firstName: form.value.firstName,
@@ -61,17 +95,12 @@ export class EventComponent implements OnInit {
       }
     )
       .subscribe((data: Participant) => {
-        event.participants.push(data);
-
-        this.eventService.put(this.id, event)
-          .subscribe(
-            (data) => {
-              console.log(data);
-            },
-            (error) => {
-              console.error(error);
-            }
-          );
+        this.event.participants.push(data);
+        this.eventService.put(this.id, this.event)
+          .subscribe();
       });
+
+    form.reset();
+    this.existingParticipant = null;
   }
 }

@@ -9,6 +9,11 @@
       "events": "Events Page"
     },
     "event": {
+      "existing-participant-main": "We already find your email in our db.",
+      "existing-participant-question": "Is this your data?",
+      "existing-participant-yes-button": "Yes",
+      "existing-participant-no-button": "No",
+      "join": "Join!",
       "description": {
         "organizer": "Organizer:",
         "contact": "Contact:",

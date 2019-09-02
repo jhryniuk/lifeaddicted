@@ -1,0 +1,4 @@
+register:
+  path: /registration
+  controller: App\Controller\RegistrationController::registerAction
+  methods: ['POST']

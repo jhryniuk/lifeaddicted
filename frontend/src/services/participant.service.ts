@@ -18,7 +18,11 @@ export class ParticipantService {
   ) {
   }
 
+  public getByEmail(email: string) {
+    return this.http.get(environment.api_url + '/participant-by-email/' + email, this.httpOptions);
+  }
+
   public createParticipant(data) {
-    return this.http.post(environment.api_url + '/participant', data, this.httpOptions)
+    return this.http.post(environment.api_url + '/participant', data, this.httpOptions);
   }
 }

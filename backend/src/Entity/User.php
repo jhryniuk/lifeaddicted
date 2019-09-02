@@ -4,26 +4,18 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use FOS\UserBundle\Model\User as BaseUser;
 
-class User
+class User extends BaseUser
 {
-    private $id;
     private $firstName;
     private $lastName;
-    private $email;
     private $events;
 
     public function __construct()
     {
         $this->events = new ArrayCollection();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
+        parent::__construct();
     }
 
     /**
@@ -56,22 +48,6 @@ class User
     public function setLastName($lastName): void
     {
         $this->lastName = $lastName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
-    {
-        $this->email = $email;
     }
 
     public function __toString()

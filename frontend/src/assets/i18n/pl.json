@@ -9,6 +9,11 @@
       "events": "Strona wydarzeń"
     },
     "event": {
+      "existing-participant-main": "Twój email został znaleziony w naszej bazie danych.",
+      "existing-participant-question": "Czy to są Twoje dane?",
+      "existing-participant-yes-button": "Tak",
+      "existing-participant-no-button": "Nie",
+      "join": "Zapisz się!",
       "description": {
         "organizer": "Organizator:",
         "contact": "Kontakt:",

@@ -15,10 +15,6 @@ App\Entity\User:
       type: string
       length: 255
       nullable: false
-    email:
-      type: string
-      length: 255
-      nullable: false
 
   manyToMany:
     events:

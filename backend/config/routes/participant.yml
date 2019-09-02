@@ -8,6 +8,11 @@ participant-show:
   controller: App\Controller\ParticipantController::show
   methods: ['get']
 
+participant-show-by-email:
+  path: /participant-by-email/{email}
+  controller: App\Controller\ParticipantController::showByEmail
+  methods: ['get']
+
 participant-post:
   path: /participant
   controller: App\Controller\ParticipantController::post
