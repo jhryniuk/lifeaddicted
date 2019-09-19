@@ -22,7 +22,7 @@ RUN apt-get -qq update --fix-missing \
         cloc \
         git-core
 
-COPY docker/php/docker-php-pecl-install /usr/local/bin/
+COPY docker/runner/php/docker-php-pecl-install /usr/local/bin/
 
 COPY --from=composer:latest /usr/bin/composer /usr/sbin/composer
 
@@ -42,8 +42,8 @@ RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
 RUN pear channel-discover pear.phing.info && \
     pear install --alldeps phing/phing
 
-COPY docker/php/php.ini /usr/local/etc/php/
-COPY docker/php/entrypoint.sh /entrypoint.sh
+COPY docker/runner/php/php.ini /usr/local/etc/php/
+COPY docker/runner/php/entrypoint.sh /entrypoint.sh
 
 VOLUME /var/www
 WORKDIR /var/www
