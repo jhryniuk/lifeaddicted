@@ -44,7 +44,8 @@ class ParticipantType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Participant::class
+            'data_class' => Participant::class,
+            'csrf_protection' => false,
         ]);
     }
 }

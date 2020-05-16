@@ -20,6 +20,7 @@ class ParticipantController extends BaseController
         $form = $this->createForm($this->getForm());
         $form->submit(json_decode($request->getContent(), true));
 
+
         if ($form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $data = $form->getData();
